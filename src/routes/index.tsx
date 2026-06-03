@@ -120,29 +120,8 @@ function Index() {
         </div>
       </section>
 
-      {/* Ad banner */}
-      <section className="bg-navy py-16">
-        <div className="mx-auto max-w-6xl px-4 md:px-8">
-          <div className="grid items-center gap-8 overflow-hidden rounded-2xl border border-gold/20 bg-gradient-navy p-8 md:grid-cols-2 md:p-10">
-            <div className="overflow-hidden rounded-xl">
-              <img src={gavelBanner} alt="مطرقة القاضي" loading="lazy" width={1024} height={768} className="h-56 w-full object-cover md:h-64" />
-            </div>
-            <div className="text-start">
-              <span className="text-sm font-semibold text-gold">عرض خاص لفترة محدودة</span>
-              <h3 className="mt-3 text-2xl font-extrabold leading-snug text-cream md:text-3xl">
-                خصم 50% على أول استشارة مع أي محامٍ أو مستشار!
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-cream/70">
-                ابدأ رحلتك القانونية معنا واحصل على أول استشارة من نخبة المتخصصين بخصم 50% لفترة محدودة.
-              </p>
-              <Link to="/lawyers" className="mt-6 inline-flex items-center gap-2 rounded-md bg-gradient-gold px-6 py-3 text-sm font-bold text-navy shadow-gold transition-transform hover:-translate-y-0.5">
-                اطلب استشارتك الآن
-                <ArrowLeft className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Ad carousel */}
+      <AdCarousel />
 
       {/* Top rated */}
       <section className="bg-navy pb-16">
