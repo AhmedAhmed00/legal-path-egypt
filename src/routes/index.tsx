@@ -2,9 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Scale, GraduationCap, Building2, ShieldCheck, MessageSquare, Clock, ArrowLeft } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { LawyerCard } from "@/components/LawyerCard";
+import { AdCarousel } from "@/components/AdCarousel";
 import { topRated, mostConsulted } from "@/data/lawyers";
 import heroLegal from "@/assets/hero-legal.jpg";
-import gavelBanner from "@/assets/gavel-banner.jpg";
 import library from "@/assets/library.jpg";
 
 export const Route = createFileRoute("/")({
@@ -41,18 +41,24 @@ function Index() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-navy">
-        <div className="absolute inset-0 pattern-grid opacity-60" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-2">
-          <div>
+      <section className="relative overflow-hidden">
+        <img
+          src={heroLegal}
+          alt="محامٍ يحمل ميزان العدالة داخل قاعة محكمة"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-l from-navy-deep/95 via-navy-deep/85 to-navy-deep/60" />
+        <div className="absolute inset-0 pattern-grid opacity-30" />
+        <div className="relative mx-auto max-w-7xl px-4 py-24 md:px-8 md:py-36">
+          <div className="max-w-2xl">
             <span className="inline-block rounded-full border border-gold/40 px-4 py-1 text-xs font-medium text-gold">
               منصة قانونية رقمية · مصر والشرق الأوسط
             </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-cream md:text-5xl">
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-cream md:text-6xl">
               محاميك
               <span className="block text-gradient-gold">العلاقة بين القانون والتكنولوجيا</span>
             </h1>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-cream/75">
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-cream/80">
               مجتمع من المحامين نسعى لتعزيز الوصول إلى العدالة من خلال الابتكار والتكنولوجيا، لتحصل على استشارتك القانونية بسرعة واحترافية وشفافية.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -62,11 +68,6 @@ function Index() {
               <Link to="/ai" className="rounded-md border border-gold/50 px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-white/5">
                 جرّب المساعد الذكي
               </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="overflow-hidden rounded-2xl border border-gold/20 shadow-card">
-              <img src={heroLegal} alt="محامٍ يحمل ميزان العدالة داخل قاعة محكمة" width={1024} height={1024} className="h-full w-full object-cover" />
             </div>
           </div>
         </div>
@@ -119,29 +120,8 @@ function Index() {
         </div>
       </section>
 
-      {/* Ad banner */}
-      <section className="bg-navy py-16">
-        <div className="mx-auto max-w-6xl px-4 md:px-8">
-          <div className="grid items-center gap-8 overflow-hidden rounded-2xl border border-gold/20 bg-gradient-navy p-8 md:grid-cols-2 md:p-10">
-            <div className="overflow-hidden rounded-xl">
-              <img src={gavelBanner} alt="مطرقة القاضي" loading="lazy" width={1024} height={768} className="h-56 w-full object-cover md:h-64" />
-            </div>
-            <div className="text-start">
-              <span className="text-sm font-semibold text-gold">عرض خاص لفترة محدودة</span>
-              <h3 className="mt-3 text-2xl font-extrabold leading-snug text-cream md:text-3xl">
-                خصم 50% على أول استشارة مع أي محامٍ أو مستشار!
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-cream/70">
-                ابدأ رحلتك القانونية معنا واحصل على أول استشارة من نخبة المتخصصين بخصم 50% لفترة محدودة.
-              </p>
-              <Link to="/lawyers" className="mt-6 inline-flex items-center gap-2 rounded-md bg-gradient-gold px-6 py-3 text-sm font-bold text-navy shadow-gold transition-transform hover:-translate-y-0.5">
-                اطلب استشارتك الآن
-                <ArrowLeft className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Ad carousel */}
+      <AdCarousel />
 
       {/* Top rated */}
       <section className="bg-navy pb-16">

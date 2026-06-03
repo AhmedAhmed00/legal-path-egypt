@@ -1,7 +1,8 @@
-import { useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Phone, Mail, MapPin, Briefcase, CheckCircle2 } from "lucide-react";
+import { MapPin, Briefcase } from "lucide-react";
 import { StarRating } from "@/components/StarRating";
+import { BookingDialog } from "@/components/BookingDialog";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import { getLawyer } from "@/data/lawyers";
 
 export const Route = createFileRoute("/lawyers/$lawyerId")({
@@ -33,7 +34,6 @@ export const Route = createFileRoute("/lawyers/$lawyerId")({
 
 function LawyerProfile() {
   const { lawyer } = Route.useLoaderData();
-  const [booked, setBooked] = useState(false);
 
   return (
     <div className="bg-cream">
@@ -64,23 +64,9 @@ function LawyerProfile() {
               <span className="text-sm text-muted-foreground">التقييم ({lawyer.reviews})</span>
             </div>
 
-            <button
-              onClick={() => setBooked(true)}
-              disabled={booked}
-              className="mt-5 w-full rounded-lg bg-navy py-3 text-sm font-bold text-cream transition-colors hover:bg-navy-deep disabled:opacity-60"
-            >
-              {booked ? "تم استلام طلب الحجز" : "احجز وادفع الآن"}
-            </button>
-            {booked && (
-              <p className="mt-3 flex items-center gap-2 rounded-lg bg-secondary p-3 text-xs text-navy">
-                <CheckCircle2 className="h-4 w-4 text-gold" />
-                تم حجز استشارتك بنجاح، سيتواصل معك المحامي قريباً لتأكيد الموعد والدفع.
-              </p>
-            )}
+            <BookingDialog lawyer={lawyer} />
 
             <div className="mt-5 space-y-3 text-sm">
-              <p className="flex items-center justify-between text-muted-foreground"><span className="flex items-center gap-2"><Phone className="h-4 w-4 text-gold" />{lawyer.phone}</span><span>رقم الهاتف</span></p>
-              <p className="flex items-center justify-between text-muted-foreground"><span className="flex items-center gap-2"><Mail className="h-4 w-4 text-gold" />{lawyer.email}</span><span>البريد الإلكتروني</span></p>
               <p className="flex items-center justify-between text-muted-foreground"><span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-gold" />{lawyer.city}</span><span>المدينة</span></p>
               <p className="flex items-center justify-between text-muted-foreground"><span className="flex items-center gap-2"><Briefcase className="h-4 w-4 text-gold" />{lawyer.experience} سنة</span><span>سنوات الخبرة</span></p>
             </div>
@@ -104,6 +90,8 @@ function LawyerProfile() {
             <li>الترافع أمام المحاكم بمختلف درجاتها</li>
           </ul>
         </div>
+
+        <ReviewsSection lawyerName={lawyer.name} />
 
         <div className="mt-10 text-center">
           <Link to="/lawyers" className="text-sm font-semibold text-navy underline">العودة لقائمة المحامين</Link>

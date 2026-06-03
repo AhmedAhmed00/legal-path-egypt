@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Wallet, Clock, Users } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
+import { PostCaseDialog } from "@/components/PostCaseDialog";
+import { SubmitOfferDialog } from "@/components/SubmitOfferDialog";
 import { cases } from "@/data/content";
 
 export const Route = createFileRoute("/cases")({
@@ -30,9 +32,13 @@ function CasesPage() {
             <h3 className="text-lg font-bold text-cream">لديك قضية تبحث لها عن محامٍ؟</h3>
             <p className="mt-1 text-sm text-cream/65">انشر تفاصيل قضيتك مجاناً واستقبل عروضاً من محامين متخصصين خلال ساعات.</p>
           </div>
-          <button className="rounded-md bg-gradient-gold px-6 py-3 text-sm font-bold text-navy shadow-gold transition-transform hover:-translate-y-0.5">
-            انشر قضيتك الآن
-          </button>
+          <PostCaseDialog
+            trigger={
+              <button className="rounded-md bg-gradient-gold px-6 py-3 text-sm font-bold text-navy shadow-gold transition-transform hover:-translate-y-0.5">
+                انشر قضيتك الآن
+              </button>
+            }
+          />
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -50,9 +56,14 @@ function CasesPage() {
                 <p className="flex items-center gap-2"><Users className="h-4 w-4 text-gold" />{c.proposals} عروض مقدمة</p>
                 <p className="flex items-center gap-2"><Clock className="h-4 w-4 text-gold" />{c.deadline}</p>
               </div>
-              <button className="mt-5 rounded-md border border-gold/50 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-white/5">
-                قدّم عرضك
-              </button>
+              <SubmitOfferDialog
+                caseTitle={c.title}
+                trigger={
+                  <button className="mt-5 w-full rounded-md border border-gold/50 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-white/5">
+                    قدّم عرضك
+                  </button>
+                }
+              />
             </div>
           ))}
         </div>
