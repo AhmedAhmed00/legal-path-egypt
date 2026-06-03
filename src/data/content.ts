@@ -71,3 +71,13 @@ export const plans: Plan[] = [
     features: ["كل مزايا الباقة الاحترافية", "صفحة محامٍ مميّزة", "ظهور في بانر الصفحة الرئيسية", "مدير حساب مخصص", "أولوية في سوق القضايا"],
   },
 ];
+
+export interface AdSlide {
+  id: string;
+  badge: string;
+  title: string;
+  text: string;
+  cta: string;
+  to: "/lawyers" | "/cases" | "/templates" | "/ai";
+  image: string;
+}
