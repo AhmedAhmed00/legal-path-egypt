@@ -2,9 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Scale, GraduationCap, Building2, ShieldCheck, MessageSquare, Clock, ArrowLeft } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import { LawyerCard } from "@/components/LawyerCard";
+import { AdCarousel } from "@/components/AdCarousel";
 import { topRated, mostConsulted } from "@/data/lawyers";
 import heroLegal from "@/assets/hero-legal.jpg";
-import gavelBanner from "@/assets/gavel-banner.jpg";
 import library from "@/assets/library.jpg";
 
 export const Route = createFileRoute("/")({
