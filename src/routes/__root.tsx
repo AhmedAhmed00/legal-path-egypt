@@ -94,6 +94,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "محاميك | منصة قانونية رقمية" },
+      { name: "description", content: "Lovable Generated Project" },
+      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "twitter:description", content: "Lovable Generated Project" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2dbd3b59-ba93-40a5-80bb-47f522629f58/id-preview-84f067bf--01454a72-c1b8-433d-b96b-ea7652cb2695.lovable.app-1780462855868.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2dbd3b59-ba93-40a5-80bb-47f522629f58/id-preview-84f067bf--01454a72-c1b8-433d-b96b-ea7652cb2695.lovable.app-1780462855868.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
