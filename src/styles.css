@@ -4,14 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@font-face {
-  font-family: "Tajawal";
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/tajawal/v11/Iurf6YBj_oCad4k1l5qjHrZpQA.woff2") format("woff2");
-}
-
 /*
  * Design system definition.
  *
