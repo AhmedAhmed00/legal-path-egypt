@@ -10,6 +10,7 @@ export default defineConfig({
   // Required for Vercel: builds .vercel/output with SSR routes (without this, no index.html → 404).
   nitro: {
     preset: "netlify",
+    vercel: { functions: { runtime: "nodejs22.x" } },
   },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
