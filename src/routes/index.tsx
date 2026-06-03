@@ -41,18 +41,24 @@ function Index() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-navy">
-        <div className="absolute inset-0 pattern-grid opacity-60" />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-2">
-          <div>
+      <section className="relative overflow-hidden">
+        <img
+          src={heroLegal}
+          alt="محامٍ يحمل ميزان العدالة داخل قاعة محكمة"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-l from-navy-deep/95 via-navy-deep/85 to-navy-deep/60" />
+        <div className="absolute inset-0 pattern-grid opacity-30" />
+        <div className="relative mx-auto max-w-7xl px-4 py-24 md:px-8 md:py-36">
+          <div className="max-w-2xl">
             <span className="inline-block rounded-full border border-gold/40 px-4 py-1 text-xs font-medium text-gold">
               منصة قانونية رقمية · مصر والشرق الأوسط
             </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-cream md:text-5xl">
+            <h1 className="mt-5 text-4xl font-extrabold leading-tight text-cream md:text-6xl">
               محاميك
               <span className="block text-gradient-gold">العلاقة بين القانون والتكنولوجيا</span>
             </h1>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-cream/75">
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-cream/80">
               مجتمع من المحامين نسعى لتعزيز الوصول إلى العدالة من خلال الابتكار والتكنولوجيا، لتحصل على استشارتك القانونية بسرعة واحترافية وشفافية.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -62,11 +68,6 @@ function Index() {
               <Link to="/ai" className="rounded-md border border-gold/50 px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-white/5">
                 جرّب المساعد الذكي
               </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="overflow-hidden rounded-2xl border border-gold/20 shadow-card">
-              <img src={heroLegal} alt="محامٍ يحمل ميزان العدالة داخل قاعة محكمة" width={1024} height={1024} className="h-full w-full object-cover" />
             </div>
           </div>
         </div>
