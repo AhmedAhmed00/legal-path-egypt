@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LawyersIndexRouteImport } from './routes/lawyers.index'
+import { Route as LawyersLawyerIdRouteImport } from './routes/lawyers.$lawyerId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +23,39 @@ const LawyersIndexRoute = LawyersIndexRouteImport.update({
   path: '/lawyers/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LawyersLawyerIdRoute = LawyersLawyerIdRouteImport.update({
+  id: '/lawyers/$lawyerId',
+  path: '/lawyers/$lawyerId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/lawyers/$lawyerId': typeof LawyersLawyerIdRoute
   '/lawyers/': typeof LawyersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/lawyers/$lawyerId': typeof LawyersLawyerIdRoute
   '/lawyers': typeof LawyersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/lawyers/$lawyerId': typeof LawyersLawyerIdRoute
   '/lawyers/': typeof LawyersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lawyers/'
+  fullPaths: '/' | '/lawyers/$lawyerId' | '/lawyers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lawyers'
-  id: '__root__' | '/' | '/lawyers/'
+  to: '/' | '/lawyers/$lawyerId' | '/lawyers'
+  id: '__root__' | '/' | '/lawyers/$lawyerId' | '/lawyers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LawyersLawyerIdRoute: typeof LawyersLawyerIdRoute
   LawyersIndexRoute: typeof LawyersIndexRoute
 }
 
@@ -65,11 +75,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LawyersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lawyers/$lawyerId': {
+      id: '/lawyers/$lawyerId'
+      path: '/lawyers/$lawyerId'
+      fullPath: '/lawyers/$lawyerId'
+      preLoaderRoute: typeof LawyersLawyerIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LawyersLawyerIdRoute: LawyersLawyerIdRoute,
   LawyersIndexRoute: LawyersIndexRoute,
 }
 export const routeTree = rootRouteImport
