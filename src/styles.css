@@ -164,5 +164,37 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-gold {
+    background-image: var(--gradient-gold);
+  }
+  .bg-gradient-navy {
+    background-image: var(--gradient-navy);
+  }
+  .text-gradient-gold {
+    background-image: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+  .pattern-grid {
+    background-image: radial-gradient(oklch(0.76 0.1 80 / 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
 }
