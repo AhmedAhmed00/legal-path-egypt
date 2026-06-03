@@ -12,8 +12,8 @@ export function PostCaseDialog({ trigger }: { trigger: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   const [done, setDone] = useState(false);
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState(specialties[1]);
-  const [city, setCity] = useState(cities[1]);
+  const [category, setCategory] = useState<string>(specialties[1]);
+  const [city, setCity] = useState<string>(cities[1]);
   const [budget, setBudget] = useState("");
   const [desc, setDesc] = useState("");
 
@@ -21,7 +21,7 @@ export function PostCaseDialog({ trigger }: { trigger: React.ReactNode }) {
 
   const reset = () => {
     setDone(false); setTitle(""); setBudget(""); setDesc("");
-    setCategory(specialties[1]); setCity(cities[1]);
+    setCategory(specialties[1] as string); setCity(cities[1] as string);
   };
 
   return (
@@ -66,7 +66,7 @@ export function PostCaseDialog({ trigger }: { trigger: React.ReactNode }) {
               <input value={budget} onChange={(e) => setBudget(e.target.value)} className={field} placeholder="مثال: 5,000 - 12,000 ج.م" maxLength={60} />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-semibold text-navy">تفاصIل القضية</label>
+              <label className="mb-2 block text-sm font-semibold text-navy">تفاصيل القضية</label>
               <textarea value={desc} onChange={(e) => setDesc(e.target.value)} rows={4} className={field} placeholder="اشرح تفاصيل قضيتك بوضوح ليتمكن المحامون من تقديم عروضهم." maxLength={1000} />
             </div>
             <button type="submit" disabled={!valid} className="w-full rounded-lg bg-gradient-gold py-2.5 text-sm font-bold text-navy shadow-gold disabled:opacity-50">
