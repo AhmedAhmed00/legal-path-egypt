@@ -91,6 +91,8 @@ function LawyerProfile() {
           </ul>
         </div>
 
+        <ReviewsSection lawyerName={lawyer.name} />
+
         <div className="mt-10 text-center">
           <Link to="/lawyers" className="text-sm font-semibold text-navy underline">العودة لقائمة المحامين</Link>
         </div>
