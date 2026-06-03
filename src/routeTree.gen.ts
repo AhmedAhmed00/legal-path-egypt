@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as CasesRouteImport } from './routes/cases'
+import { Route as AiRouteImport } from './routes/ai'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LawyersIndexRouteImport } from './routes/lawyers.index'
 import { Route as LawyersLawyerIdRouteImport } from './routes/lawyers.$lawyerId'
@@ -20,9 +22,19 @@ const TemplatesRoute = TemplatesRouteImport.update({
   path: '/templates',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CasesRoute = CasesRouteImport.update({
   id: '/cases',
   path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiRoute = AiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,14 +55,18 @@ const LawyersLawyerIdRoute = LawyersLawyerIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai': typeof AiRoute
   '/cases': typeof CasesRoute
+  '/register': typeof RegisterRoute
   '/templates': typeof TemplatesRoute
   '/lawyers/$lawyerId': typeof LawyersLawyerIdRoute
   '/lawyers/': typeof LawyersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai': typeof AiRoute
   '/cases': typeof CasesRoute
+  '/register': typeof RegisterRoute
   '/templates': typeof TemplatesRoute
   '/lawyers/$lawyerId': typeof LawyersLawyerIdRoute
   '/lawyers': typeof LawyersIndexRoute
@@ -58,20 +74,38 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai': typeof AiRoute
   '/cases': typeof CasesRoute
+  '/register': typeof RegisterRoute
   '/templates': typeof TemplatesRoute
   '/lawyers/$lawyerId': typeof LawyersLawyerIdRoute
   '/lawyers/': typeof LawyersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cases' | '/templates' | '/lawyers/$lawyerId' | '/lawyers/'
+  fullPaths:
+    | '/'
+    | '/ai'
+    | '/cases'
+    | '/register'
+    | '/templates'
+    | '/lawyers/$lawyerId'
+    | '/lawyers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cases' | '/templates' | '/lawyers/$lawyerId' | '/lawyers'
+  to:
+    | '/'
+    | '/ai'
+    | '/cases'
+    | '/register'
+    | '/templates'
+    | '/lawyers/$lawyerId'
+    | '/lawyers'
   id:
     | '__root__'
     | '/'
+    | '/ai'
     | '/cases'
+    | '/register'
     | '/templates'
     | '/lawyers/$lawyerId'
     | '/lawyers/'
@@ -79,7 +113,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiRoute: typeof AiRoute
   CasesRoute: typeof CasesRoute
+  RegisterRoute: typeof RegisterRoute
   TemplatesRoute: typeof TemplatesRoute
   LawyersLawyerIdRoute: typeof LawyersLawyerIdRoute
   LawyersIndexRoute: typeof LawyersIndexRoute
@@ -94,11 +130,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TemplatesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cases': {
       id: '/cases'
       path: '/cases'
       fullPath: '/cases'
       preLoaderRoute: typeof CasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai': {
+      id: '/ai'
+      path: '/ai'
+      fullPath: '/ai'
+      preLoaderRoute: typeof AiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -127,7 +177,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiRoute: AiRoute,
   CasesRoute: CasesRoute,
+  RegisterRoute: RegisterRoute,
   TemplatesRoute: TemplatesRoute,
   LawyersLawyerIdRoute: LawyersLawyerIdRoute,
   LawyersIndexRoute: LawyersIndexRoute,
