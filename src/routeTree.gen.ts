@@ -9,10 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TemplatesRouteImport } from './routes/templates'
+import { Route as CasesRouteImport } from './routes/cases'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LawyersIndexRouteImport } from './routes/lawyers.index'
 import { Route as LawyersLawyerIdRouteImport } from './routes/lawyers.$lawyerId'
 
+const TemplatesRoute = TemplatesRouteImport.update({
+  id: '/templates',
+  path: '/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,36 +43,64 @@ const LawyersLawyerIdRoute = LawyersLawyerIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cases': typeof CasesRoute
+  '/templates': typeof TemplatesRoute
   '/lawyers/$lawyerId': typeof LawyersLawyerIdRoute
   '/lawyers/': typeof LawyersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cases': typeof CasesRoute
+  '/templates': typeof TemplatesRoute
   '/lawyers/$lawyerId': typeof LawyersLawyerIdRoute
   '/lawyers': typeof LawyersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cases': typeof CasesRoute
+  '/templates': typeof TemplatesRoute
   '/lawyers/$lawyerId': typeof LawyersLawyerIdRoute
   '/lawyers/': typeof LawyersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lawyers/$lawyerId' | '/lawyers/'
+  fullPaths: '/' | '/cases' | '/templates' | '/lawyers/$lawyerId' | '/lawyers/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lawyers/$lawyerId' | '/lawyers'
-  id: '__root__' | '/' | '/lawyers/$lawyerId' | '/lawyers/'
+  to: '/' | '/cases' | '/templates' | '/lawyers/$lawyerId' | '/lawyers'
+  id:
+    | '__root__'
+    | '/'
+    | '/cases'
+    | '/templates'
+    | '/lawyers/$lawyerId'
+    | '/lawyers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CasesRoute: typeof CasesRoute
+  TemplatesRoute: typeof TemplatesRoute
   LawyersLawyerIdRoute: typeof LawyersLawyerIdRoute
   LawyersIndexRoute: typeof LawyersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/templates': {
+      id: '/templates'
+      path: '/templates'
+      fullPath: '/templates'
+      preLoaderRoute: typeof TemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +127,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CasesRoute: CasesRoute,
+  TemplatesRoute: TemplatesRoute,
   LawyersLawyerIdRoute: LawyersLawyerIdRoute,
   LawyersIndexRoute: LawyersIndexRoute,
 }
