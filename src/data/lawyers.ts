@@ -20,6 +20,20 @@ export interface Lawyer {
   bio: string;
 }
 
+export interface Review {
+  id: string;
+  author: string;
+  rating: number;
+  date: string;
+  text: string;
+}
+
+export const sampleReviews: Review[] = [
+  { id: "r1", author: "أحمد سمير", rating: 5, date: "منذ أسبوع", text: "تعامل راقٍ واحترافية عالية، تابع قضيتي خطوة بخطوة وحصلت على نتيجة ممتازة. أنصح به بشدة." },
+  { id: "r2", author: "منى عبد الله", rating: 5, date: "منذ شهر", text: "استشارة واضحة ودقيقة وفّرت عليّ وقتاً ومجهوداً كبيراً. شرح لي كل التفاصيل القانونية ببساطة." },
+  { id: "r3", author: "كريم حسن", rating: 4, date: "منذ شهرين", text: "محامٍ متمكن ورده سريع على الاستفسارات، تجربة موفّقة بشكل عام." },
+];
+
 export const specialties = [
   "كل التخصصات",
   "قانون الأسرة",
