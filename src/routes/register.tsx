@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Upload, CheckCircle2 } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
-import { plans, specialties } from "@/data/content";
+import { plans } from "@/data/content";
 import { specialties as specs } from "@/data/lawyers";
 
 export const Route = createFileRoute("/register")({
